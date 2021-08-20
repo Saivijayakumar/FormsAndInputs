@@ -21,6 +21,7 @@
         <div>
             <label for="email">Email input type : </label>
             <input type="email" id="email" name="email">
+            <error-output class="email-error" for="email"></error-output>
         </div>
         <div>
             <label for="url">Url input type : </label>
@@ -52,6 +53,13 @@
         </div>
     </form>
     <script>
+        //Showing the updated value when move rangefield  
+        const salary = document.querySelector('#salary');
+        const output = document.querySelector('.salary-output');
+        salary.addEventListener('input',function(){
+            output.textContent=salary.value;
+        });
+        //UC 1: Valid Name
         const text = document.querySelector('#text');
         const textError = document.querySelector('.text-error');
         text.addEventListener('input',function(){
@@ -63,6 +71,20 @@
             else
             {
                 textError.textContent = "Name is Incorrect";
+            }
+        });
+        //UC2 : Valid Email
+        const email = document.querySelector('#email');
+        const emailError = document.querySelector('.email-error');
+        email.addEventListener('input',function(){
+            let emailRegex = RegExp('^abc([+. \-_]{1}\w+)?@[a-z0-9]+\.[a-z]{2,3}(\.[a-z]{2,3})?$');
+            if(emailRegex.test(email.value))
+            {
+                emailError.textContent = "";
+            }
+            else
+            {
+                emailError.textContent="Invalid Email";
             }
         });
     </script>
