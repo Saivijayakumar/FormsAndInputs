@@ -11,16 +11,17 @@
         </header>
         <div>
             <label for="text">Text input type for Name: </label>
-            <input type="text" id="text" name="text">
+            <input type="text" id="text" name="text" placeholder="Name">
             <error-output class="text-error" for="text"></error-output>
         </div>
         <div>
             <label for="pwd">password input type: </label>
             <input type="password" id="pwd" name="pwd">
+            <error-output class="password-error" for="pwd"></error-output>
         </div>
         <div>
             <label for="email">Email input type : </label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" placeholder="Email">
             <error-output class="email-error" for="email"></error-output>
         </div>
         <div>
@@ -33,7 +34,7 @@
         </div>
         <div>
             <label for="tel">Tel input type : </label>
-            <input type="tel" id="tel" name="tel">
+            <input type="tel" id="tel" name="tel" placeholder="PhoneNumber">
             <error-output class="number-error" for="number"></error-output>
         </div>
         <div>
@@ -100,6 +101,20 @@
             else
             {
                 numberError.textContent="Invalid Number";
+            }
+        });
+        //UC 4 : Validating Password
+        const password = document.querySelector('#pwd');
+        const pwdError = document.querySelector('.password-error');
+        password.addEventListener('input',function(){
+            let passwordRegex = RegExp('^[a-z]*[A-Z][a-z]*.[a-z]*[0-9][a-z]*$');
+            if(passwordRegex.test(password.value))
+            {
+                pwdError.textContent = "";
+            }
+            else
+            {
+                pwdError.textContent="Invalid Number";
             }
         });
     </script>
